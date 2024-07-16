@@ -27,7 +27,6 @@ const NominateCandidateForm = () => {
     }
 
     const handleSelectionAdd = () => {
-        console.log('first received')
 
         const nomination: Nomination = {
             id: crypto.randomUUID(),
@@ -37,7 +36,9 @@ const NominateCandidateForm = () => {
         }
         add(nomination)
 
-        console.log('added')
+        setCandidate('')
+        setVotes(0)
+        setRole('')
     }
 
     const roles = [
