@@ -49,7 +49,7 @@ const NominateCandidateForm = () => {
         <form onSubmit={handleSelectionAdd}>
             <div className="flex gap-y-2 flex-col w-full max-w-full">
                 <Input onChange={(e) => setCandidate(e.target.value)} value={candidate} className="bg-white/10 py-3 px-4 w-full rounded-lg text-sm" placeholder="Candidate Name" />
-                <select className='w-full bg-white/10 py-2 px-4' onChange={(e) => setRole(e.target.value)}>
+                <select className='w-full bg-white/10 py-3 px-4 text-xs font-semibold' onChange={(e) => setRole(e.target.value)}>
                     {/* <SelectTrigger className="w-full bg-white/10">
                         <SelectValue placeholder="Nomination" />
                     </SelectTrigger>
@@ -58,7 +58,7 @@ const NominateCandidateForm = () => {
                         <SelectItem value="dark">Onowu of the year</SelectItem>
                         <SelectItem value="system">Cruise </SelectItem>
                     </SelectContent> */}
-                    {roles.map(role => <option key={role} value={role} className='uppercase'>{role.toLocaleUpperCase()}</option>)}
+                    {roles.map(role => <option key={role} value={role} className='uppercase text-sm'>{role.toLocaleUpperCase()}</option>)}
                 </select>
 
 
