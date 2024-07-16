@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="static">
+      <body className="static min-h-[200vh]">
         <Header />
         {children}
       </body>
