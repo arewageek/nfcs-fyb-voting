@@ -8,9 +8,9 @@ const Header = () => {
             </div>
 
             <div className='text-sm font-bold'>
-                <button className='bg-white/10 px-3 py-2 rounded hover:bg-white/5 transition'>
+                {/* <button className='bg-white/10 px-3 py-2 rounded hover:bg-white/5 transition'>
                     Menu
-                </button>
+                </button> */}
             </div>
         </div>
     )
