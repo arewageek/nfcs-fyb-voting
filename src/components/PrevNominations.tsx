@@ -30,8 +30,8 @@ const PrevNominations = () => {
             <div className="pt-3 flex gap-2 flex-wrap">
 
                 {
-                    selections.map(nom => <span key={crypto.randomUUID()} className="font-normal text-xs py-2 px-3 rounded-xl bg-white/10 inline">
-                        {nom.candidate} &mdash; <b className="italic">{nom.votes} vote{nom.votes > 1 ? 's' : ''}</b> &mdash; Cool Calm Collected
+                    selections.map(nom => <span key={crypto.randomUUID()} className="font-normal text-xs py-2 px-3 rounded-xl bg-white/10 inline capitalize">
+                        {nom.candidate} &mdash; <b className="italic">{nom.votes} vote{nom.votes > 1 ? 's' : ''}</b> &mdash; {nom.role}
                     </span>)
                 }
 

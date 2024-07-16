@@ -40,20 +40,25 @@ const NominateCandidateForm = () => {
         console.log('added')
     }
 
+    const roles = [
+        'geek of the year', 'onowu of the year', 'cruise'
+    ]
+
     return (
         <form onSubmit={handleSelectionAdd}>
             <div className="flex gap-y-2 flex-col w-full max-w-full">
                 <Input onChange={(e) => setCandidate(e.target.value)} value={candidate} className="bg-white/10 py-3 px-4 w-full rounded-lg text-sm" placeholder="Candidate Name" />
-                <Select>
-                    <SelectTrigger className="w-full bg-white/10">
+                <select className='w-full bg-white/10 py-2 px-4' onChange={(e) => setRole(e.target.value)}>
+                    {/* <SelectTrigger className="w-full bg-white/10">
                         <SelectValue placeholder="Nomination" />
                     </SelectTrigger>
-                    <SelectContent className='bg-gray-700'>
+                    <SelectContent className='bg-gray-700' onChange={(e) => console.log(e)}>
                         <SelectItem value="light">Geek of The year</SelectItem>
                         <SelectItem value="dark">Onowu of the year</SelectItem>
                         <SelectItem value="system">Cruise </SelectItem>
-                    </SelectContent>
-                </Select>
+                    </SelectContent> */}
+                    {roles.map(role => <option key={role} value={role} className='uppercase'>{role.toLocaleUpperCase()}</option>)}
+                </select>
 
 
                 <div className="max-w-full flex gap-x-2">
@@ -81,7 +86,7 @@ const NominateCandidateForm = () => {
                 </div>
 
             </div>
-        </form>
+        </form >
     )
 }
 
