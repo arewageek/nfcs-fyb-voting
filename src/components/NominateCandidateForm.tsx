@@ -10,15 +10,38 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { useSelectionStore } from '@/store'
+import { Nomination } from './PrevNominations'
+import { Button } from './ui/button'
 
 const NominateCandidateForm = () => {
 
-    const [candidate, setCandidate] = useState<string>()
-    const [role, setRole] = useState<string>()
+    const [candidate, setCandidate] = useState<string>('')
+    const [role, setRole] = useState<string>('')
     const [votes, setVotes] = useState<number>(0)
 
+    const { add } = useSelectionStore()
+
+    const handleInputChange = () => {
+        return false;
+    }
+
+    const handleSelectionAdd = () => {
+        console.log('first received')
+
+        const nomination: Nomination = {
+            id: crypto.randomUUID(),
+            candidate,
+            role,
+            votes
+        }
+        add(nomination)
+
+        console.log('added')
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSelectionAdd}>
             <div className="flex gap-y-2 flex-col w-full max-w-full">
                 <Input onChange={(e) => setCandidate(e.target.value)} value={candidate} className="bg-white/10 py-3 px-4 w-full rounded-lg text-sm" placeholder="Candidate Name" />
                 <Select>
@@ -40,7 +63,7 @@ const NominateCandidateForm = () => {
                         </button>
                     </div>
                     <div className="w-fit">
-                        <input type="text" className="bg-white/10 w-full px-2 py-2 text-center" value={`${votes} vote${votes > 1 ? 's' : ''}`} />
+                        <input type="text" className="bg-white/10 w-full px-2 py-2 text-center" value={`${votes} vote${votes > 1 ? 's' : ''}`} onChange={() => handleInputChange} />
                     </div>
 
                     <div className="w-fit">
@@ -51,9 +74,9 @@ const NominateCandidateForm = () => {
                 </div>
 
                 <div className="w-full">
-                    <button className="w-full text-sm py-2 px-3 bg-sky-500 text-black font-bold hover:bg-sky-600 transition">
+                    <Button type='button' onClick={handleSelectionAdd} className="w-full text-sm py-2 px-3 bg-sky-500 text-black font-bold hover:bg-sky-600 transition">
                         Add
-                    </button>
+                    </Button>
 
                 </div>
 

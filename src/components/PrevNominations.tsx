@@ -1,37 +1,20 @@
-import React from 'react'
+"use client"
 
-export interface Nominations {
+import { useSelectionStore } from "@/store"
+import { useEffect, useState } from "react"
+
+export interface Nomination {
+    id: string,
     candidate: string,
     role: string,
     votes: number
 }
 
 const PrevNominations = () => {
-    const allNominations: Nominations[] = [
-        {
-            candidate: "Arewa Geek",
-            role: "Geek of the Year",
-            votes: 1
-        },
-        {
-            candidate: "Arewa Geek",
-            role: "Geek of the Year",
-            votes: 1
-        }
-    ]
+    const [cost, setCost] = useState(0)
+    const [count, setCount] = useState(0)
 
-    const cost = async () => {
-        const costPerNomination = 100;
-
-        let nominationsCount = 0;
-
-        for (let i = 0; i <= allNominations.length; i++) {
-            nominationsCount += allNominations[i].votes
-        }
-        console.log(nominationsCount)
-
-        return 30
-    }
+    const { selections } = useSelectionStore()
 
     return (
         <div className="pt-8">
@@ -41,14 +24,14 @@ const PrevNominations = () => {
                 </h3>
 
                 <div className='text-xs font-medium'>
-                    Cost: &#8358;{cost().toLocaleString()}
+                    Cost: &#8358;{cost.toLocaleString()}
                 </div>
             </div>
             <div className="pt-3 flex gap-2 flex-wrap">
 
                 {
-                    allNominations.map(nom => <span key={nom.candidate} className="font-normal text-xs py-2 px-3 rounded-xl bg-white/10 inline">
-                        {/* {nom.candidate} &mdash; <b className="italic">{nom.votes} vote{nom.votes > 1 ? 's' : ''}</b> &mdash; Cool Calm Collected */}
+                    selections.map(nom => <span key={crypto.randomUUID()} className="font-normal text-xs py-2 px-3 rounded-xl bg-white/10 inline">
+                        {nom.candidate} &mdash; <b className="italic">{nom.votes} vote{nom.votes > 1 ? 's' : ''}</b> &mdash; Cool Calm Collected
                     </span>)
                 }
 
