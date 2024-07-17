@@ -19,7 +19,7 @@ interface TrxResponse {
 
 const PaystackCheckoutButton = () => {
 
-    const { sum } = useSelectionStore()
+    const { sum, removeAll, clearSum } = useSelectionStore()
 
 
     const config: PaystackProps = {
@@ -40,6 +40,9 @@ const PaystackCheckoutButton = () => {
         verify()
 
         toast.success("Payment was successful")
+
+        clearSum()
+        removeAll()
     };
 
     // you can call this function anything
@@ -52,7 +55,6 @@ const PaystackCheckoutButton = () => {
     const initializePayment = usePaystackPayment(config);
 
     const handleCheckout = () => {
-        console.log({ key: process.env.NEXT_PUBLIC_PAYSTACK_TEST_PUB_KEY })
         initializePayment({ onSuccess, onClose })
     }
 

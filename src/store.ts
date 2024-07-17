@@ -9,6 +9,7 @@ type SelectionStore = {
   removeAll: () => void;
   sum: number;
   increaseSum: (newSum: number) => void;
+  clearSum: () => void;
 };
 
 export const useSelectionStore = create<SelectionStore>((set, get) => ({
@@ -29,13 +30,16 @@ export const useSelectionStore = create<SelectionStore>((set, get) => ({
     const updatedSelections = updateSelections(newNomination, selections);
     set({ selections: updatedSelections });
   },
-  removeAll: () => {
-    set({ selections: [] });
-  },
   increaseSum: (newSum) => {
     const { sum } = get();
     const newTotalSum = newSum + sum;
     set({ sum: newTotalSum });
+  },
+  removeAll: () => {
+    set({ selections: [] });
+  },
+  clearSum: () => {
+    set({ sum: 0 });
   },
 }));
 

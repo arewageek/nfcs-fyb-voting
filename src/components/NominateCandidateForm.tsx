@@ -40,7 +40,7 @@ const NominateCandidateForm = () => {
         increaseSum(votes * costPerVote)
 
         setCandidate('')
-        setVotes(0)
+        setVotes(1)
         setRole('')
     }
 
@@ -52,10 +52,10 @@ const NominateCandidateForm = () => {
         <form onSubmit={handleSelectionAdd}>
             <div className="flex gap-y-2 flex-col w-full max-w-full">
                 <Input onChange={(e) => setCandidate(e.target.value)} value={candidate} className="bg-white/10 py-3 px-4 w-full rounded-lg text-sm" placeholder="Candidate Name" />
-                <select className='w-full bg-white/10 py-3 px-4 text-xs font-semibold' onChange={(e) => setRole(e.target.value)}>
+                <select className='w-full bg-white/10 py-4 px-4 text-xs font-semibold' onChange={(e) => setRole(e.target.value)}>
 
-                    <option>Select Award Nomination</option>
-                    {roles.map(role => <option key={role} value={role} className='uppercase text-sm'>{role.toLocaleUpperCase()}</option>)}
+                    <option className='py-3 px-4 text-sm'>Select Award Nomination</option>
+                    {roles.map(role => <option key={role} value={role} className='uppercase text-sm py-3 px-4'>{role.toLocaleUpperCase()}</option>)}
                 </select>
 
 
