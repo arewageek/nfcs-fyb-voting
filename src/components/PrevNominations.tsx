@@ -2,6 +2,7 @@
 
 import { useSelectionStore } from "@/store"
 import { useEffect, useState } from "react"
+import PaystackCheckoutButton from "./PaystackCheckoutButton"
 
 export interface Nomination {
     id: string,
@@ -14,7 +15,7 @@ const PrevNominations = () => {
     const [cost, setCost] = useState(0)
     const [count, setCount] = useState(0)
 
-    const { selections } = useSelectionStore()
+    const { selections, sum } = useSelectionStore()
 
     return (
         <div className="pt-8">
@@ -24,7 +25,7 @@ const PrevNominations = () => {
                 </h3>
 
                 <div className='text-xs font-medium'>
-                    Cost: &#8358;{cost.toLocaleString()}
+                    Cost: &#8358;{sum.toLocaleString()}
                 </div>
             </div>
             <div className="pt-3 flex gap-2 flex-wrap">
@@ -38,9 +39,7 @@ const PrevNominations = () => {
             </div>
 
             <div className="pt-5 text-sm font-bold">
-                <button className=" bg-sky-500 px-3 py-3 rounded text-black w-full hover:bg-sky-600 transition">
-                    Proceed to Payment
-                </button>
+                <PaystackCheckoutButton />
             </div>
         </div>
     )

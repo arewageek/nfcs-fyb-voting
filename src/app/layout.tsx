@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layouts/Header";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
   title: "NFCS FYB Personalities",
@@ -20,6 +19,7 @@ export default function RootLayout({
       <body className="static min-h-[200vh]">
         <Header />
         {children}
+        <ToastContainer />
       </body>
     </html>
   );

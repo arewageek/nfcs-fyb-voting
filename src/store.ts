@@ -7,10 +7,13 @@ type SelectionStore = {
   add: (nomination: Nomination) => void;
   // remove: (candidateId: number) => void;
   removeAll: () => void;
+  sum: number;
+  increaseSum: (newSum: number) => void;
 };
 
 export const useSelectionStore = create<SelectionStore>((set, get) => ({
   selections: [],
+  sum: 0,
   count: () => {
     const { selections } = get();
     if (selections.length)
@@ -28,6 +31,11 @@ export const useSelectionStore = create<SelectionStore>((set, get) => ({
   },
   removeAll: () => {
     set({ selections: [] });
+  },
+  increaseSum: (newSum) => {
+    const { sum } = get();
+    const newTotalSum = newSum + sum;
+    set({ sum: newTotalSum });
   },
 }));
 
