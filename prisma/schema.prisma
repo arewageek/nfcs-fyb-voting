@@ -83,21 +83,23 @@ model Positions {
 }
 
 model Fybs {
-  id        String @unique
+  id        String @unique @default(uuid()) @id
   name      String
   nickname  String
   email     String
   phone     String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
 }
 
 model Candidates {
-  id          String @unique
-  candidateId String
+  id          String  @id @unique @default(uuid())
+  candidateId String 
   name        String
-  role        String
+  award        String
   votes       Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+}
+
+model Awards {
+  id          String @unique @id @default(uuid())
+  name        String
+  isValid     Boolean @default(true)
 }
